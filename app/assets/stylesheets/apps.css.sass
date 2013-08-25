@@ -1,0 +1,36 @@
+body.apps_show
+  .app
+    @include app
+    padding-bottom: 5px
+    border-bottom: 1px solid $border_color
+    .app-details
+      display: none
+  .review
+    @include review
+    padding: 8px 0
+    border-bottom: 1px solid $border_color
+    &:last-child
+      margin-bottom: 20px
+
+body.apps_index
+  .app-reviews
+    margin-bottom: 30px
+  .app
+    @include app
+    padding-bottom: 5px
+    border-bottom: 1px solid $border_color
+    .app-details
+      display: none
+  .reviews
+    overflow: hidden
+  .review
+    @include review
+    padding: 5px 0
+    border-bottom: 1px solid $border_color
+    &:not(:first-child)
+      display: none
+  .more-reviews,
+  .hide-reviews
+    @include clickable_text
+    margin-top: 3px
+    font-size: 14px

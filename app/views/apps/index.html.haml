@@ -1,0 +1,13 @@
+%ul#apps
+  - @apps.each do |app|
+    %li.app-reviews
+      .app
+        = render 'app', app: app
+      %ul.reviews
+        - app.reviews.each do |review|
+          %li.review= render 'reviews/review', review: review
+        - if app.reviews[1].present?
+          .more-reviews= t('more')
+          .hide-reviews(hidden)= t('hide')
+
+= render 'layouts/pagination', objects: @apps

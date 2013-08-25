@@ -1,0 +1,16 @@
+%ul#reviews
+  - @reviews.each do |review|
+    %li.review-apps
+      .review= render 'review', review: review
+      %ul.apps
+        - review.apps.each_with_index do |app, idx|
+          - first_one = idx.zero?
+          %li.app{hidden: not(first_one)}
+            = render 'apps/app', app: app, visible: first_one
+            .more-reviews= link_to t('show_all_reviews'), app_path(app)
+        - if review.apps[1].present?
+          .app-controllers
+            %span.show-all-apps= t('show_all')
+            %span.hide-apps(hidden)= t('hide')
+
+= render 'layouts/pagination', objects: @reviews

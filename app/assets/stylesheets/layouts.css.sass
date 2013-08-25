@@ -1,0 +1,71 @@
+$base_color: #34495e
+$border_color: #bdc3c7
+$selected_color: #e74c3c
+$button_color: #1abc9c
+
+body
+  color: $base_color
+a
+  color: $base_color
+  text-decoration: none
+
+header, #contents, footer
+  padding: 10px 15px
+
+header
+  color: #ffffff
+  @include background-image(linear-gradient(lighten($base_color, 10%), darken($base_color, 10%)))
+  .description
+    font-size: 10px
+    margin-bottom: 2px
+  .title
+    font:
+      size: 20px
+      family: sans-serif
+      weight: bold
+    color: #ffffff
+
+ul#nav-tabs
+  overflow: hidden
+  margin: 8px 15px 15px
+  border-bottom: 1px solid $border_color
+  li
+    a
+      display: block
+      float: left
+      width: 50%
+      text-align: center
+      padding: 10px 0
+      &.selected
+        color: $selected_color
+        font-weight: bold
+        border-bottom: 3px solid $selected_color
+
+footer
+  #caution
+    font-size: 10px
+    line-height: 14px
+    p:first-child
+      font-weight: bold
+
+#pagination
+  overflow: hidden
+  #prev-page,
+  #next-page
+    a
+      float: left
+      width: 50%
+      display: block
+      font-size: 40px
+      padding: 10px 0
+      text-align: center
+
+@media screen and (min-width : 769px)
+  #nav-tabs,
+  #contents,
+  footer
+    width: 738px
+  footer p
+    display: inline
+    &:first-child
+      margin-right: 10px

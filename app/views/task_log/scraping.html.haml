@@ -1,0 +1,24 @@
+%style{:type => 'text/css'}
+  body, a {color: #34495e}
+  a {text-decoration: none}
+  table {border-collapse: collapse; border-spacing: 0;}
+  td {border-top: 1px #bdc3c7 solid;}
+  ul {list-style: none;}
+  .reviewer {margin-top: 30px}
+
+- @logs.each do |log|
+  .reviewer= "#{log[:name]} (code: #{log[:code]})"
+  %table
+    %tbody.entries
+      - log[:entries].each do |entry|
+        %tr.entry
+          %td.title= link_to entry[:title], entry[:url]
+          %td.result
+            - if entry[:error].nil?
+              %ul.apps
+                - entry[:apps].each do |app|
+                  %li.app= link_to app[:name], app[:url]
+            - else
+              .error
+                .inspect= entry[:error][:inspect]
+                .backtrace= entry[:error][:backtrace]

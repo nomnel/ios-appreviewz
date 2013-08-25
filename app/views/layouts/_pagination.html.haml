@@ -1,0 +1,3 @@
+%nav#pagination
+  #prev-page= (link_to_previous_page objects, '', class: 'icon-chevron-left') || '<a></a>'.html_safe
+  #next-page= link_to_next_page objects, '', class: 'icon-chevron-right'

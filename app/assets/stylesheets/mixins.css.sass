@@ -1,0 +1,81 @@
+@mixin clickable_text($position: right, $fontsize: 14px)
+  float: $position
+  text-align: $position
+  font-weight: bold
+  font-size: $fontsize
+  cursor: pointer
+
+@mixin review
+  .reviewer
+    font-size: 12px
+    font-weight: bold
+  .published
+    float: right
+    font-size: 12px
+    margin-top: 3px
+  .title
+    margin-top: 3px
+    font-size: 16px
+    font-weight: bold
+    line-height: 20px
+
+@mixin app
+  overflow: hidden
+  .artwork
+    float: left
+    margin-right: 5px
+    img
+      width: 60px
+      height: 60px
+      @include border-radius(10px)
+  .name
+    font-size: 15px
+    @include ellipsis()
+  .price
+    font-size: 12px
+    margin-top: 4px
+  .category
+    font-size: 12px
+    margin-top: 4px
+    @include ellipsis()
+  .rating
+    overflow: hidden
+    margin-top: 2px
+    width: 65px
+    height: 11px
+    .rating-star
+      display: block
+      float: left
+      width: 11px
+      height: 11px
+      margin-right: 2px
+      background: url(/rating_star.png) 0 0 no-repeat
+    .rating-star.half
+      width: 6px
+      background: url(/rating_star_half.png) 0 0 no-repeat
+  .app-store
+    font-size: 16px
+    float: right
+    margin-top: 9px
+    background-color: $button_color
+    @include border-radius(5px)
+    a
+      color: #ffffff
+      display: block
+      padding: 9px 10px 11px 10px
+  .app-details
+    margin-top: 1px
+    font-size: 12px
+    line-height: 16px
+    div
+      dt
+        clear: left
+        float: left
+        width: 60px
+        text-align: right
+        margin-right: 5px
+      dd
+        margin-top: 2px
+        margin-left: 65px
+      &.version dt
+        font-size: 11px

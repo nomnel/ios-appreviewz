@@ -1,0 +1,25 @@
+- visible = true if visible.nil?
+.artwork
+  %img(src="#{visible ? app.artwork60_url : ''}" alt="#{app.name}" data-src="#{app.artwork60_url}")
+.name= app.name
+.app-store= link_to t('app_store'), (app.affiliate_url || app.url)
+.price= app.formatted_price
+.category= app.primary_category.name
+.rating
+  - app.rating.to_i.times do
+    %span.rating-star
+  - if (app.rating * 10).to_i % 10 > 0
+    %span.rating-star.half
+%dl.app-details
+  .version
+    %dt= "#{t 'app.version'}:"
+    %dd= app.version
+  .developer
+    %dt= "#{t 'app.developer'}:"
+    %dd= app.developer.name
+  .size
+    %dt= "#{t 'app.size'}:"
+    %dd= "#{app.size_mb} MB"
+  .description
+    %dt= "#{t 'app.description'}:"
+    %dd= app.description

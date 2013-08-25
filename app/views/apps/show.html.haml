@@ -1,0 +1,7 @@
+.app= render 'app', app: @app
+
+%ul#reviews
+  - @reviews.each do |review|
+    %li.review= render 'reviews/review', review: review
+
+= render 'layouts/pagination', objects: @reviews

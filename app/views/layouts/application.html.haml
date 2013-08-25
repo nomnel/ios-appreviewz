@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %title= 'AppReviewz for iOS'
+    %meta(name="viewport" content="width=device-width")
+    %link(rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png")
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = render 'shared/ga'
+%body{ class: "#{controller.class.to_s.underscore.gsub(%r{/}, "-").gsub(/_controller/, "_") + action_name}" }
+  %header
+    .description= 'iPhone, iPadアプリのレビューまとめ'
+    = link_to 'AppReviewz for iOS', root_path, class: 'title'
+  %ul#nav-tabs
+    %li#apps-tab= link_to t('apps'), apps_path
+    %li#reviews-tab= link_to t('reviews'), reviews_path
+
+  #contents
+    = yield
+
+  %footer
+    #caution
+      %p= t('caution')
+      %p= t('app_info_may_not_have_been_latest')
+      %p= t('check_AppStore_for_latest_info')

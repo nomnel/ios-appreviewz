@@ -1,0 +1,16 @@
+ja:
+  apps: アプリ
+  reviews: レビュー
+  app_store: App Store
+  app:
+    version: バージョン
+    developer: 開発者
+    size: サイズ
+    description: 説明
+  show_all: ▼ 全て表示
+  more: ▼ さらに表示
+  hide: ▲ 隠す
+  show_all_reviews: ▶ 全てのレビューを表示
+  caution: ※ 注意
+  app_info_may_not_have_been_latest: 記載の情報は取得時点のものです。
+  check_AppStore_for_latest_info: 最新の情報はApp Storeにてお確かめください。
