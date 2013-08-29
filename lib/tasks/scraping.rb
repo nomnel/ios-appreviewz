@@ -167,7 +167,7 @@ class Tasks::Scraping
     end
 
     def self.find_appcodes reviewer, agent
-      affiliate_urls_finder(reviewer).call(agent.page).uniq.map{|url|
+      app_urls_finder(reviewer).call(agent.page).uniq.map{|url|
         begin
           agent.get url
           url = agent.page.uri.to_s
@@ -249,7 +249,7 @@ class Tasks::Scraping
       end
     end
 
-    def self.affiliate_urls_finder reviewer
+    def self.app_urls_finder reviewer
       case reviewer.code
       when 1 then # AppBank
         -> page {page./('img[src="http://img.blog.appbank.net/appdl.png"]').map{|e| e./('..')[0].attribute('href').to_s}.presence || page./('img[src*="phobos.apple.com/"]').map{|e| e./('..')[0].attribute('href').to_s}}
@@ -280,7 +280,7 @@ class Tasks::Scraping
       when 14 then # RainbowApps
         -> page {page./('img[src="http://blog.rainbowapps.com/wp-content/uploads/2010/12/download.png"]').map{|e| e./('..')[0].attribute('href').to_s}}
       when 15 then # Touch Lab
-        -> page {page./('a[href^="http://click.linksynergy.com/"]').map{|e| e.attribute('href').to_s}}
+        -> page {page./('a[href^="http://click.linksynergy.com/"]').map{|e| e.attribute('href').to_s}.presence || page./('a[href^="https://itunes.apple.com/"]').map{|e| e.attribute('href').to_s}}
       else
         raise "finder for #{reviewer.name} is not implemented."
       end
