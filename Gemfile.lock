@@ -53,6 +53,9 @@ GEM
     diff-lcs (1.2.4)
     domain_name (0.5.12)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (0.8.0)
+    dotenv-rails (0.8.0)
+      dotenv (= 0.8.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -192,6 +195,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails!
+  dotenv-rails
   feedzirra
   font-awesome-rails
   haml-rails
