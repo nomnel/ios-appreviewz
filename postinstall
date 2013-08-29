@@ -1,8 +1,13 @@
 #!/bin/sh
 
 set -e
-ln -s /home/sqale/etc/database.yml /home/sqale/current/config/database.yml
-ln -s /home/sqale/etc/.env /home/sqale/current/.env
+if [ ! -e /home/sqale/current/config/database.yml ]; then
+  ln -s /home/sqale/etc/database.yml /home/sqale/current/config/database.yml
+fi
+if [ ! -e /home/sqale/current/.env ]; then
+  ln -s /home/sqale/etc/.env /home/sqale/current/.env
+fi
 cd /home/sqale/current
+source /home/sqale/current/.env
 bundle exec rake assets:precompile
 bundle exec whenever --update-crontab
