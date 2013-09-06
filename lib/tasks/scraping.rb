@@ -258,7 +258,7 @@ class Tasks::Scraping
       when 3 then # 男子ハック
         -> page {page./('img[src="http://www.danshihack.com/wordpress_r/wp-content/uploads/2013/02/AppDownloadButton-2.jpg"]').map{|e| e./('..')[0].attribute('href').to_s}}
       when 4 then # あぷまがどっとねっと
-        -> page {page./('a[href^="http://click.linksynergy.com/"] > img[src*="phobos.apple.com/"]').map{|e| e./('..')[0].attribute('href').to_s}}
+        -> page {page./('a[href^="http://click.linksynergy.com/"] > img[src*="phobos.apple.com/"], a[href^="https://itunes.apple.com/"] > img[src*="phobos.apple.com/"]').map{|e| e./('..')[0].attribute('href').to_s}}
       when 5 then # アップス！
         -> page {page./('a[href^="http://click.linksynergy.com/"] > img[src*="phobos.apple.com/"], a[href^="https://itunes.apple.com/"] > img[src*="phobos.apple.com/"]').map{|e| e./('..')[0].attribute('href').to_s}}
       when 6 then # AppleFan
